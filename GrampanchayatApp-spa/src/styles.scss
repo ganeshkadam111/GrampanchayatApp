@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+button:focus {
+    outline: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.full-width-image {
+    min-height: 100vh;
+    width: 100vw;
+    background: url('./assets/images/winter.jpg') no-repeat center center
+      fixed;
+    background-size: cover;
+  }
+  
