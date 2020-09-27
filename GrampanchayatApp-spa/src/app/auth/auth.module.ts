@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MaterialModule } from '../module/material.module';
 import { AuthComponent } from './auth.component';
+import { CoreModule } from '../core/core.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AuthComponent } from './auth.component';
     AuthRoutingModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CoreModule
   ]
 })
 export class AuthModule { }
