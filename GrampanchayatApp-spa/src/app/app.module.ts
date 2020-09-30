@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { MaterialModule } from './module/material.module';
 import { CoreModule } from './core/core.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -18,8 +20,12 @@ import { CoreModule } from './core/core.module';
     AppRoutingModule,
     AuthModule,
     CoreModule,
+    DashboardModule,
+    HomeModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

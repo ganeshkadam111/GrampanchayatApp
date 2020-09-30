@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
-import { LoginComponent } from './auth/login/login.component';
-import { ContentComponent } from './core/components/content/content.component';
 import { PageNotFoundComponent } from './core/pages/page-not-found/page-not-found.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
@@ -30,7 +29,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: ContentComponent,
+    component: DashboardComponent,
     children: [
       {
         path: 'dashboard',
