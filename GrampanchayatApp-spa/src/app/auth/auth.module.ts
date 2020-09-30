@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
@@ -8,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { MaterialModule } from '../module/material.module';
 import { AuthComponent } from './auth.component';
 import { CoreModule } from '../core/core.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,9 +20,9 @@ import { CoreModule } from '../core/core.module';
     CommonModule,
     AuthRoutingModule,
     MaterialModule,
+    CoreModule,
     FormsModule,
-    ReactiveFormsModule,
-    CoreModule
+    ReactiveFormsModule
   ]
 })
 export class AuthModule { }
