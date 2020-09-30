@@ -43,10 +43,10 @@ export class LoginComponent implements OnInit {
       return;
     } else if (this.data.username.value === localStorage.getItem('username') &&
      this.data.password.value === localStorage.getItem('password')) {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/dashboard/search']);
     } else {
       this.submitted = true;
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/dashboard/search']);
     }
   }
 }
