@@ -5,20 +5,20 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { MaterialModule } from '../module/material.module';
 import { CoreModule } from '../core/core.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SearchComponent } from './search/search.component';
+import { ApplicationRequestComponent } from './application-request/application-request.component';
+import { CalculatorComponent } from './calculator/calculator.component';
+
 @NgModule({
   declarations: [
     DashboardComponent,
-    SearchComponent
+    ApplicationRequestComponent,
+    CalculatorComponent
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     MaterialModule,
-    CoreModule,
-    FormsModule,
-    ReactiveFormsModule
+    CoreModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

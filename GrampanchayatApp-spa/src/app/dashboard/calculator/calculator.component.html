@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <mat-card class="outline">
+        <h3 class="text-center">ग्रामपंचायत कर आकारणी (घरपट्टी) calculator</h3>
+        <mat-divider></mat-divider>
+        <mat-form-field class="col-sm-5 pt-3">
+            <input type="number" matInput [(ngModel)]="lenght" placeholder="लांबी" (ngModelChange)="calculateArea()">
+        </mat-form-field> X
+        <mat-form-field class="col-sm-5">
+            <input type="number" matInput [(ngModel)]="width" placeholder="रुंदी" (ngModelChange)="calculateArea()">
+        </mat-form-field>
+        <div class="w-100"></div>
+        <div class="col-sm-5 mat-title">क्षेत्रफळ = {{area}}</div>
+        <div class="w-100"></div>
+        <mat-form-field class="col-sm-5">
+            <input type="number" matInput [(ngModel)]="buildingAge" placeholder="इमारतीचे वय (दिवसात)">
+        </mat-form-field>
+        <mat-form-field class="col-sm-5">
+            <input type="number" matInput [(ngModel)]="yearlyRate" placeholder="जमिनीचे वार्षिक मूल्य दर ">
+        </mat-form-field>
+        <div class="w-100"></div>
+        <mat-form-field class="col-sm-5">
+            <input type="number" matInput [(ngModel)]="constructionRate" placeholder="इमारतीचे बांधकामाचा दर">
+        </mat-form-field>
+        <mat-form-field class="col-sm-5">
+            <input type="number" matInput [(ngModel)]="weight" placeholder="भारांक">
+        </mat-form-field>
+        <div class="w-100"></div>
+        <mat-form-field class="col-sm-5">
+            <input type="number" matInput [(ngModel)]="depreciationRate" placeholder="घसारा दर">
+        </mat-form-field>
+        <mat-form-field class="col-sm-5">
+            <input type="number" matInput [(ngModel)]="homeTax" placeholder="घरपट्टी दर">
+        </mat-form-field>
+        <div class="w-100"></div>
+        <div class="col-sm-5 mat-title" *ngIf="total>0"> Total= {{total}}</div>
+        <mat-divider></mat-divider>
+        <div class="d-flex justify-content-between pt-2">
+            <button mat-raised-button color="primary" (click)="calculateTotal()">Calculate</button>
+        </div>
+    </mat-card>
+</div>

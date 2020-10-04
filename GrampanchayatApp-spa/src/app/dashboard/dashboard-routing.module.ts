@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ApplicationRequestComponent } from './application-request/application-request.component';
+import { CalculatorComponent } from './calculator/calculator.component';
 import { DashboardComponent } from './dashboard.component';
-import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {
@@ -9,11 +10,19 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
-        path: 'search',
-        component: SearchComponent
+        path: 'requests',
+        component: ApplicationRequestComponent
+      },
+      {
+        path: 'calculator',
+        component: CalculatorComponent
       }
     ]
   }
+  // {
+  // path: 'dashboard',
+  // component: DashboardComponent
+  // }
 ];
 
 
