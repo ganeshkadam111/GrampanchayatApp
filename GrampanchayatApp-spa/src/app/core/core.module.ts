@@ -9,6 +9,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { HeaderWithLoginComponent } from './components/header-with-login/header-with-login.component';
 import { HeaderWithoutLoginComponent } from './components/header-without-login/header-without-login.component';
+import { OnlyNumberDirective } from './directives/only-number.directive';
+import { AuthService } from './service/auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,21 +19,27 @@ import { HeaderWithoutLoginComponent } from './components/header-without-login/h
     FooterComponent,
     PageNotFoundComponent, 
     HeaderWithLoginComponent, 
-    HeaderWithoutLoginComponent
+    HeaderWithoutLoginComponent, 
+    OnlyNumberDirective
   ],
   imports: [
     CommonModule,
     MaterialModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   exports: [
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     HeaderComponent, 
     FooterComponent,
     PageNotFoundComponent, 
     HeaderWithLoginComponent, 
-    HeaderWithoutLoginComponent
+    HeaderWithoutLoginComponent,
+    OnlyNumberDirective
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
