@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-sm-6">
+        <mat-card>
+            <img mat-card-image src="../../assets/images/MH_map.jpg" alt="Photo of a MH map">
+        </mat-card>
+    </div>
+    <div class="col-sm-6">
+        <mat-card class="outline">
+            <h3 class="text-center">Nashik Division</h3>
+            <div class="form-group text-align-center">
+                <mat-radio-group>
+                    <mat-radio-button color="primary" [value]="1">7/12</mat-radio-button>
+                    <mat-radio-button color="primary" class="pl-2" [value]="2">8A</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <form [formGroup]="searchForm">
+                <mat-form-field class="w-100">
+                    <mat-select formControlName="district" placeholder="District"
+                        (selectionChange)="onDistrictSelect($event.value)">
+                        <mat-option *ngFor="let item of district" [value]="item.id">
+                            {{item.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="form.district.errors?.required">please select option</mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                    <mat-select formControlName="taluka" placeholder="Taluka"
+                        (selectionChange)="onTalukaSelect($event.value)">
+                        <mat-option *ngFor="let item of filteredTaluka" [value]="item.id">
+                            {{item.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="form.taluka.errors?.required">please select option</mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                    <mat-select formControlName="village" placeholder="Village">
+                        <mat-option *ngFor="let item of filteredVillage" [value]="item.id">
+                            {{item.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="form.village.errors?.required">please select option</mat-error>
+                </mat-form-field>
+                <mat-radio-group formControlName="searchType">
+                    <mat-radio-button value="1" color="primary" class="pl-2">Survey no/gat no
+                    </mat-radio-button>
+                    <mat-radio-button value="2" color="primary" class="pl-2">Survey no in words/gat no
+                    </mat-radio-button>
+                    <mat-radio-button value="3" color="primary" class="pl-2">First Name
+                    </mat-radio-button>
+                    <mat-radio-button value="4" color="primary" class="pl-2">Middle Name
+                    </mat-radio-button>
+                    <mat-radio-button value="5" color="primary" class="pl-2">Surname</mat-radio-button>
+                    <mat-radio-button value="6" color="primary" class="pl-2">Full Name</mat-radio-button>
+                </mat-radio-group>
+                <mat-form-field class="w-100">
+                    <mat-select formControlName="totalCount" placeholder="Village Total Name [2522]">
+                    </mat-select>
+                </mat-form-field>
+                <mat-divider></mat-divider>
+                <div class="d-flex justify-content-center">
+                    <button mat-raised-button (click)="search()" color="primary">search</button>
+                </div>
+            </form>
+        </mat-card>
+    </div>
+</div>

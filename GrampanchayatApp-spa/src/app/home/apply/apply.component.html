@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <mat-card class="outline">
+        <h3 class="text-center">Apply form Grampanchayat</h3>
+        <form [formGroup]="searchForm">
+            <mat-form-field class="col-sm-4">
+                <mat-select formControlName="district" placeholder="District"
+                    (selectionChange)="onDistrictSelect($event.value)">
+                    <mat-option *ngFor="let item of district" [value]="item.id">
+                        {{item.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.district.errors?.required">please select option</mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-sm-4">
+                <mat-select formControlName="taluka" placeholder="Taluka"
+                    (selectionChange)="onTalukaSelect($event.value)">
+                    <mat-option *ngFor="let item of filteredTaluka" [value]="item.id">
+                        {{item.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.taluka.errors?.required">please select option</mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-sm-4">
+                <mat-select formControlName="village" placeholder="Village">
+                    <mat-option *ngFor="let item of filteredVillage" [value]="item.id">
+                        {{item.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.village.errors?.required">please select option</mat-error>
+            </mat-form-field>
+            <div class="w-100"></div>
+            <mat-radio-group class="col-sm-12" formControlName="searchType">
+                <mat-radio-button value="1" color="primary" class="pl-2">residential certificate
+                </mat-radio-button>
+                <mat-radio-button value="2" color="primary" class="pl-2">Birth certificate
+                </mat-radio-button>
+                <mat-radio-button value="3" color="primary" class="pl-2">Death cerificate
+                </mat-radio-button>
+                <mat-radio-button value="4" color="primary" class="pl-2">Merriage cerificate
+                </mat-radio-button>
+                <mat-radio-button value="5" color="primary" class="pl-2">Ghar Patti</mat-radio-button>
+                <mat-radio-button value="6" color="primary" class="pl-2">Ghar patti ferphar</mat-radio-button>
+                <mat-radio-button value="7" color="primary" class="pl-2">tilet certificate</mat-radio-button>
+                <mat-radio-button value="8" color="primary" class="pl-2">Ghar patti ferphar</mat-radio-button>
+                <mat-radio-button value="9" color="primary" class="pl-2">Building allow certificate</mat-radio-button>
+                <mat-radio-button value="10" color="primary" class="pl-2">Job card certificate</mat-radio-button>
+                <mat-radio-button value="11" color="primary" class="pl-2"> Self declaration certificate</mat-radio-button>
+                <mat-radio-button value="12" color="primary" class="pl-2"> Water cannection certificate</mat-radio-button>
+                <mat-radio-button value="13" color="primary" class="pl-2"> daridrya reshekhalil certificate</mat-radio-button>
+            </mat-radio-group>
+            <div class="w-100"></div>
+            <mat-form-field class="col-sm-4">
+                <input type="text" matInput placeholder="Mobile No" formControlName="contactNo" maxlength="10" onlyNumber>
+                <mat-error *ngIf="form.contactNo.errors?.required">Mobile Nos is required</mat-error>
+              </mat-form-field>
+              <mat-form-field class="col-sm-4 mr-auto">
+                <input type="text" matInput placeholder="aadhar No" formControlName="aadharNo" maxlength="16" onlyNumber>
+                <mat-error *ngIf="form.aadharNo.errors?.required">Aadhar No is required</mat-error>
+              </mat-form-field>
+              <div class="w-100"></div>
+              <mat-divider></mat-divider>
+                <div class="d-flex justify-content-center pt-2">
+                    <button mat-raised-button (click)="search()" color="primary">Apply</button>
+                </div>
+        </form>
+    </mat-card>
+</div>
