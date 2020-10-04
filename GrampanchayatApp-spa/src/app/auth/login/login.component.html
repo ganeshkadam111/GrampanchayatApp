@@ -5,32 +5,32 @@
         <div class="alert alert-danger" role="alert" *ngIf="submitted">
           Username or password is incorrect
         </div>
-        <mat-card>
+        <mat-card  class="outline">
           <h3 class="text-center">Login</h3>
-          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
             <mat-form-field class="w-100">
               <input type="text" matInput placeholder="Username" formControlName="username">
-              <mat-error *ngIf="data.username.errors?.required">Username is required</mat-error>
+              <mat-error *ngIf="form.username.errors?.required">Username is required</mat-error>
             </mat-form-field>
             <mat-form-field class="w-100">
               <input type="password" matInput placeholder="Password" formControlName="password">
-              <mat-error *ngIf="data.password.errors?.required">Password is required</mat-error>
+              <mat-error *ngIf="form.password.errors?.required">Password is required</mat-error>
             </mat-form-field>
             <mat-form-field class="w-100">
               <mat-select formControlName="grampanchayatName" placeholder="Grampanchayat Name">
-                <mat-option *ngFor="let country of countries" [value]="country.short">
-                  {{country.full}}
+                <mat-option *ngFor="let item of village" [value]="item.id">
+                  {{item.name}}
                 </mat-option>
               </mat-select>
-              <mat-error *ngIf="data.grampanchayatName.errors?.required">please select option</mat-error>
+              <mat-error *ngIf="form.grampanchayatName.errors?.required">please select option</mat-error>
             </mat-form-field>
             <div class="d-flex justify-content-between mb-2">
               <button mat-raised-button color="primary">Login</button>
-              <a [routerLink]="['/login']" mat-button color="primary">forgot password</a>
+              <a [routerLink]="['/auth/login']" mat-button color="primary">forgot password</a>
             </div>
             <mat-divider></mat-divider>
             <div class="d-flex justify-content-center">
-              <a [routerLink]="['/register']" class=" ml-2"  mat-button color="primary">Register</a>
+              <a [routerLink]="['/auth/register']" class=" ml-2"  mat-button color="primary">Register</a>
             </div>
           </form>
         </mat-card>

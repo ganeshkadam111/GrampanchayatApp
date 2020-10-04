@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,24 +12,26 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
 
-  countries: any = [
-    {
-      full: 'Great Britain',
-      short: 'GB'
-    },
-    {
-      full: 'United States',
-      short: 'US'
-    },
-    {
-      full: 'Canada',
-      short: 'CA'
-    }
+  village = [
+    { id: 1, talukaId: 1, name: 'Malichinchora' },
+    { id: 2, talukaId: 2, name: 'Rashin' },
+    { id: 3, talukaId: 2, name: 'Khed' },
+    { id: 4, talukaId: 2, name: 'MirajGaon' },
+    { id: 5, talukaId: 4, name: 'Rui' },
+    { id: 6, talukaId: 4, name: 'malegaon BK' }
   ];
 
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+  constructor(
+    private formBuilder: FormBuilder, 
+    private router: Router,
+    public authService: AuthService
+    ) { }
 
   ngOnInit() {
+    if(this.authService.isLoggedIn){
+      this.router.navigate(['dashboard']); 
+    }
+
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -36,17 +39,14 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  get data() { return this.loginForm.controls; }
+  get form() { return this.loginForm.controls; }
 
-  onSubmit() {
+  
+  loginUser() {
     if (this.loginForm.invalid) {
       return;
-    } else if (this.data.username.value === localStorage.getItem('username') &&
-     this.data.password.value === localStorage.getItem('password')) {
-      this.router.navigate(['/dashboard/search']);
-    } else {
-      this.submitted = true;
-      this.router.navigate(['/dashboard/search']);
     }
+    this.authService.login(this.form.username,this.form.password);
   }
+
 }
