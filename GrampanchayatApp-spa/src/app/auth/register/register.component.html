@@ -1,33 +1,85 @@
 <div class="d-flex align-items-center h-100">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-sm-5">
-        <mat-card>
-          <h3 class="text-center">Register</h3>
-          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-            <mat-form-field class="w-100">
-              <input type="text" matInput placeholder="First Name" formControlName="firstname">
-              <mat-error *ngIf="data.firstname.errors?.required">First Name is required</mat-error>
-            </mat-form-field>
-            <mat-form-field class="w-100">
-              <input type="text" matInput placeholder="Last Name" formControlName="lastname">
-              <mat-error *ngIf="data.lastname.errors?.required">Last Name is required</mat-error>
-            </mat-form-field>
-            <mat-form-field class="w-100">
-              <input type="text" matInput placeholder="Username" formControlName="username">
-              <mat-error *ngIf="data.username.errors?.required">Username is required</mat-error>
-            </mat-form-field>
-            <mat-form-field class="w-100">
-              <input type="password" matInput placeholder="Password" formControlName="password">
-              <mat-error *ngIf="data.password.errors?.required">Password is required</mat-error>
-            </mat-form-field>
-            <div class="mt-4">
-              <button mat-raised-button color="primary">Register</button>
-              <a [routerLink]="['/login']" class="ml-2" mat-button color="primary">Cancel</a>
-            </div>
-          </form>
-        </mat-card>
-      </div>
+      <mat-card class="outline">
+        <h3 class="text-center">Register</h3>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <mat-form-field class="col-sm-4">
+            <input type="text" matInput placeholder="First Name" formControlName="firstName">
+            <mat-error *ngIf="form.firstName.errors?.required">First Name is required</mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-sm-4">
+            <input type="text" matInput placeholder="Middle Name" formControlName="middleName">
+          </mat-form-field>
+          <mat-form-field class="col-sm-4">
+            <input type="text" matInput placeholder="Last Name" formControlName="lastName">
+            <mat-error *ngIf="form.lastName.errors?.required">Last Name is required</mat-error>
+          </mat-form-field>
+          <div class="w-100"></div>
+          <mat-form-field class="col-sm-4">
+            <input type="text" matInput placeholder="Mobile No" formControlName="contactNo" maxlength="10" onlyNumber>
+            <mat-error *ngIf="form.contactNo.errors?.required">Mobile Nos is required</mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-sm-4 mr-auto">
+            <input type="text" matInput placeholder="aadhar No" formControlName="aadharNo" maxlength="16" onlyNumber>
+            <mat-error *ngIf="form.aadharNo.errors?.required">Aadhar No is required</mat-error>
+          </mat-form-field>
+          <div class="w-100"></div>
+          <mat-form-field class="col-sm-4">
+            <mat-select formControlName="district" placeholder="District"
+              (selectionChange)="onDistrictSelect($event.value)">
+              <mat-option *ngFor="let item of district" [value]="item.id">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.district.errors?.required">please select option</mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-sm-4">
+            <mat-select formControlName="taluka" placeholder="Taluka" (selectionChange)="onTalukaSelect($event.value)">
+              <mat-option *ngFor="let item of filteredTaluka" [value]="item.id">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.taluka.errors?.required">please select option</mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-sm-4">
+            <mat-select formControlName="village" placeholder="Village">
+              <mat-option *ngFor="let item of filteredVillage" [value]="item.id">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+            <!-- <mat-error *ngIf="form.village.errors?.required">please select option</mat-error> -->
+          </mat-form-field>
+
+          <div class="w-100"></div>
+          <mat-form-field class="col-sm-4">
+            <input matInput [matDatepicker]="picker1" placeholder="Start Date" formControlName="startDate" disabled>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1 disabled="false"></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field class="col-sm-4">
+            <input matInput [matDatepicker]="picker2" placeholder="End Date" [min]="minDate" formControlName="endDate"
+              disabled>
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2 disabled="false"></mat-datepicker>
+          </mat-form-field>
+          <div class="w-100"></div>
+          <mat-form-field class="col-sm-4 mr-auto">
+            <input type="text" matInput placeholder="Username" formControlName="username">
+            <mat-error *ngIf="form.username.errors?.required">Username is required</mat-error>
+          </mat-form-field>
+          <div class="w-100"></div>
+          <mat-form-field class="col-sm-4 mr-auto">
+            <input type="password" matInput placeholder="Password" formControlName="password">
+            <mat-error *ngIf="form.password.errors?.required">Password is required</mat-error>
+          </mat-form-field>
+          <div class="mt-4">
+            <button mat-raised-button color="primary">Register</button>
+            <button mat-button class="ml-2" Color="primary" type="reset">clear</button>
+          </div>
+        </form>
+      </mat-card>
     </div>
   </div>
 </div>
