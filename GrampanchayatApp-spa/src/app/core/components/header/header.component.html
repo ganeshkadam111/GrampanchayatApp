@@ -1,8 +1,14 @@
 <mat-toolbar color="primary">
   <img src="../../assets/images/headerNew.png">
-  <mat-toolbar-row class="justify-content-between">
-    <button [routerLink]="['/dashboard/search']" mat-button>Search</button>
-    <button [routerLink]="['/auth/login']" mat-button>Login</button>
-    <button [routerLink]="['/auth/register']" mat-button>Register</button>
+  <mat-toolbar-row class="justify-content-between" >
+    <button [routerLink]="['/home/search']" mat-button>Search</button>
+    <button [routerLink]="['/home/apply']"  mat-button *ngIf="!this.authService.isLoggedIn">Apply</button>
+    <button [routerLink]="['/auth/login']" mat-button *ngIf="!this.authService.isLoggedIn">Login</button>
+    <button [routerLink]="['/auth/register']" mat-button *ngIf="!this.authService.isLoggedIn"> Register</button>
+    <button [routerLink]="['/dashboard/requests']"  mat-button *ngIf="this.authService.isLoggedIn">Request</button>
+    <button [routerLink]="['/dashboard/requests']" mat-button *ngIf="this.authService.isLoggedIn">Daily Report</button>
+    <button [routerLink]="['/dashboard/requests']" mat-button *ngIf="this.authService.isLoggedIn">Annual Report</button>
+    <button [routerLink]="['/dashboard/calculator']" mat-button *ngIf="this.authService.isLoggedIn"> Calculator</button>
+    <button mat-button (click)="logout()" *ngIf="this.authService.isLoggedIn">Logout</button>
   </mat-toolbar-row>
 </mat-toolbar>
