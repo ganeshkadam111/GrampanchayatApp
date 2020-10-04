@@ -8,6 +8,12 @@
     <button [routerLink]="['/dashboard/requests']"  mat-button *ngIf="this.authService.isLoggedIn">Request</button>
     <button [routerLink]="['/dashboard/requests']" mat-button *ngIf="this.authService.isLoggedIn">Daily Report</button>
     <button [routerLink]="['/dashboard/requests']" mat-button *ngIf="this.authService.isLoggedIn">Annual Report</button>
+    <button mat-button [matMenuTriggerFor]="belowMenu">Print Form</button>
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+      <button mat-menu-item>domaciale certificate</button>
+      <button mat-menu-item>Death certificate</button>
+    </mat-menu>
+
     <button [routerLink]="['/dashboard/calculator']" mat-button *ngIf="this.authService.isLoggedIn"> Calculator</button>
     <button mat-button (click)="logout()" *ngIf="this.authService.isLoggedIn">Logout</button>
   </mat-toolbar-row>
